@@ -15,6 +15,7 @@ Freedman-Banking is an app designed with the look and feel of a real world onlin
  It will be a full-stack, full-CRUD app, utilizing a RESTful JSON API with the so-called "React on Rails" stack. It will demonstrate working Full CRUD (index, show, create, update, delete) actions effecting the non-User tables.
 
 ## Component Hierarchy
+![Component Hierarchy](/assets/component_hierarchy.png)
 
 ## Wireframes & Branding
 
