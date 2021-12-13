@@ -10,7 +10,7 @@ Student Project 4
 
 ## Overview
 
-Freedman-Banking is an app designed with the look and feel of a real world online banking application in mind. It will have the all the bells and whistles including the ability to create a checking or savings account, make withdrawels and deposits, and cashout and close the account at any point.
+Freedman-Banking is an app designed with the look and feel of a real world online banking application in mind. It will have the all the bells and whistles including the ability to create a checking or savings account, make withdrawls and deposits, and cashout and close the account at any point.
 
  It will be a full-stack, full-CRUD app, utilizing a RESTful JSON API with the so-called "React on Rails" stack. It will demonstrate working Full CRUD (index, show, create, update, delete) actions effecting the non-User tables.
 
