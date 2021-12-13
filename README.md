@@ -30,7 +30,7 @@ Freedman-Banking is an app designed with the look and feel of a real world onlin
 
 * Build a Ruby on Rails server, exposing RESTful JSON endpoints.
 
-* Build a database with at least 3 tables: users, accounts, categories
+* Build a database with at least 2 tables: users, accounts
 
 * Utilize Rails to define models for interacting with the database.
 
