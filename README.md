@@ -58,9 +58,12 @@ Freedman-Banking is an app designed with the look and feel of a real world onlin
 ## POST MVP GOALS
 Two factor authentication
 
-## Project Schedule
+## Libraries and Dependencies
 
-| Date          | Deliverable   | Status |
-| ------------- | ------------- | ------ |
-|               |               |        |
-|               |               |        |
+|     Library      | Description                                                            |
+| :--------------: | :----------------------------------------------------------------------|
+|      React       | _This is used for the frontend development of this site_               |
+|   React Router   | _Used for directing the user through React Components._                |
+|      Rails       | _This is the server-side app which is the framework for our database._ |
+|     PostgreSQL   | _This is the database used for all data used on this site._            |
+|  JWT and bcrypt  | _This is used for user athentication and building JSON web tokens_     |
