@@ -19,7 +19,7 @@ Freedman-Banking is an app designed with the look and feel of a real world onlin
 ## Wireframes & Branding
 
 ## ER Diagram
-![ERD Diagram](/assets/erd_diagram.png)
+![ERD Diagram](/assets/erd_diagram_2.png)
 
 
 ## MVP GOALS
