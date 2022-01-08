@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
+  before_action :authorize_request
 
   # GET /accounts
   def index
@@ -16,7 +17,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   def create
     @account = Account.new(account_params)
-
+    @account.user = @current_user
     if @account.save
       render json: @account, status: :created, location: @account
     else
