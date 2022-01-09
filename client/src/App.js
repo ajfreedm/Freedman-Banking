@@ -7,11 +7,11 @@ function App() {
   return (
     <div className="App">
      <Layout>
-       <switch>
+       <Switch>
          <Route path='/login'>
            <Login />
          </Route>
-       </switch>
+       </Switch>
      </Layout>
     </div>
   );

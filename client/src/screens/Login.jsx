@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ export default function Login() {
 
   return (
     <form>
+        <h3>Login</h3>
       <label>
         Username:
         <input
@@ -38,6 +40,7 @@ export default function Login() {
       </label>
       <br />
       <button>Submit</button>
+      <Link to='/register'>Register</Link>
     </form>
   );
 }
