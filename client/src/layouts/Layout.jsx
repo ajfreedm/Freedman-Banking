@@ -18,6 +18,7 @@ export default function Layout(props) {
         {currentUser && (
             <nav>
                 <Link to='/users'>Users</Link>
+                <br />
                 <Link to='/accounts'>Accounts</Link>
             </nav>
         )}
