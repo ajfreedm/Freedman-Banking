@@ -30,6 +30,9 @@ useEffect(()=>{
   return (
     <div>
          <Switch>
+         <Route path='/accounts/new'>
+           <h1>Create form</h1>
+         </Route>
          <Route path='/users'>
            <Users users={users} />
          </Route>
