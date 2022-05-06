@@ -1,13 +1,21 @@
+// Packages
 import {useState, useEffect} from 'react'
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, useHistory} from 'react-router-dom';
+
+// Components
 import Users from '../screens/Users';
 import Accounts from '../screens/Accounts';
+import AccountCreate from '../screens/AccountCreate';
+
+// Services
 import {getAllUsers} from '../services/user';
-import {getAllAccounts} from '../services/account';
+import {getAllAccounts, postAccount} from '../services/account';
+
 
 export default function MainContainer() {
 const [users, setUsers] = useState([]);
 const [accounts, setAccounts] = useState([]);
+const history = useHistory();
 
 useEffect(()=>{
     const fetchUsers = async ()=>{
@@ -27,11 +35,19 @@ useEffect(()=>{
 }, []);
 
 
+const handleAccountCreate = async (formData) => {
+  const newAccount = await postAccount(formData);
+  setAccounts((prevState) => [...prevState, newAccount]);
+  history.push('/accounts');
+};
+
+
+
   return (
     <div>
          <Switch>
          <Route path='/accounts/new'>
-           <h1>Create form</h1>
+         <AccountCreate handleAccountCreate={handleAccountCreate}/>
          </Route>
          <Route path='/users'>
            <Users users={users} />
