@@ -1,7 +1,11 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :update, :destroy]
-  before_action :authorize_request
-  # uncomment above line to require authorized requests
+  before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :set_user_account, only: [:update]
+  #before_action :set_user_account, only: [:update, :destroy]
+
+
+
 
   # GET /accounts
   def index
@@ -45,6 +49,10 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_account
       @account = Account.find(params[:id])
+    end
+
+    def set_user_account
+      @account = @current_user.accounts.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

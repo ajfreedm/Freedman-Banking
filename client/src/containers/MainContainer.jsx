@@ -9,7 +9,7 @@ import AccountCreate from '../screens/AccountCreate';
 
 // Services
 import {getAllUsers} from '../services/user';
-import {getAllAccounts, postAccount} from '../services/account';
+import {getAllAccounts, postAccount, deleteAccount} from '../services/account';
 
 
 export default function MainContainer() {
@@ -41,6 +41,10 @@ const handleAccountCreate = async (formData) => {
   history.push('/accounts');
 };
 
+const handleAccountDelete = async (id) => {
+  await deleteAccount(id);
+  setAccounts(prevState=> prevState.filter(account => account.id !== id));
+}
 
 
   return (
@@ -53,7 +57,7 @@ const handleAccountCreate = async (formData) => {
            <Users users={users} />
          </Route>
          <Route path='/accounts'>
-           <Accounts accounts={accounts} />
+           <Accounts accounts={accounts} handleAccountDelete={handleAccountDelete} />
          </Route>
          <Route path='/'>
            <h1>Home</h1>
