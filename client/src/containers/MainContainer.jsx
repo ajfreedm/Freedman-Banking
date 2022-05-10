@@ -6,6 +6,7 @@ import {Switch, Route, useHistory} from 'react-router-dom';
 import Users from '../screens/Users';
 import Accounts from '../screens/Accounts';
 import AccountCreate from '../screens/AccountCreate';
+import AccountEdit from '../screens/AccountEdit';
 
 // Services
 import {getAllUsers} from '../services/user';
@@ -46,10 +47,16 @@ const handleAccountDelete = async (id) => {
   setAccounts(prevState=> prevState.filter(account => account.id !== id));
 }
 
+// The order of the routes DO matter
 
   return (
     <div>
          <Switch>
+
+         <Route path='/accounts/:id/edit'>
+           <AccountEdit accounts={accounts}/>
+         </Route>
+
          <Route path='/accounts/new'>
          <AccountCreate handleAccountCreate={handleAccountCreate}/>
          </Route>

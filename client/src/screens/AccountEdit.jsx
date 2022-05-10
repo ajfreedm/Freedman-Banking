@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-export default function AccountCreate({ handleAccountCreate }) {
+export default function AccountEdit({ accounts }) {
   const [formData, setFormData] = useState({
     category: 'checking',
     balance: '',
   });
   const { category, balance } = formData;
+  const { id }= useParams();
+
+  useEffect(() => {
+      const prefillFormData = () => {
+          const accountItem = accounts.find((account) => account.id === Number(id));
+          setFormData({balance: accountItem.balance});
+      }
+      if (accounts.length) prefillFormData();
+  },[accounts]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,10 +29,10 @@ export default function AccountCreate({ handleAccountCreate }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        handleAccountCreate(formData);
+        //handleAccountCreate(formData);
       }}
     >
-      <h3>Create Account</h3>
+      <h3>Edit Account</h3>
       
       <label>
         Category:
