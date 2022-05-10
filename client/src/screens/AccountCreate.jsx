@@ -1,11 +1,11 @@
-import React from 'react';
 import { useState } from 'react';
 
 export default function AccountCreate({ handleAccountCreate }) {
   const [formData, setFormData] = useState({
-    name: '',
+    category: 'Checking',
+    balance: '',
   });
-  const { name } = formData;
+  const { category, balance } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +23,24 @@ export default function AccountCreate({ handleAccountCreate }) {
       }}
     >
       <h3>Create Account</h3>
+      
       <label>
-        Name:
-        <input type='text' name='name' value={name} onChange={handleChange} />
+        Category:
       </label>
+        <select name='category' value={category} onChange={handleChange} defaultValue={"default"} >
+        <option value={"default"} disabled>
+          Choose an option
+        </option>
+        <option value="Checking">Checking</option>
+        <option value="Savings">Savings</option>
+      </select>
+     
+      <br />
+      <label>
+        Balance:
+      <input type='text' name='balance' value={balance} onChange={handleChange} />
+      </label>
+      <br />
       <button>Submit</button>
     </form>
   );
