@@ -6,9 +6,9 @@ export default function Accounts({ accounts, handleAccountDelete, currentUser })
     <div>
         <h3>Accounts</h3>
         {accounts.map((account) => (
-          <div>
+          <div key={account.id}>
             <p>{account.user_id} {account.category} {account.balance} </p>
-            {currentUser.id === account.user_id && (
+            {currentUser?.id === account.user_id && (
             <>
               <Link to={`/accounts/${account.id}/edit`}>
                 <button>Edit</button>
