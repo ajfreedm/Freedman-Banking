@@ -13,7 +13,7 @@ import {getAllUsers} from '../services/user';
 import {getAllAccounts, postAccount, deleteAccount, putAccount} from '../services/account';
 
 
-export default function MainContainer() {
+export default function MainContainer({ currentUser}) {
 const [users, setUsers] = useState([]);
 const [accounts, setAccounts] = useState([]);
 const history = useHistory();
@@ -74,7 +74,7 @@ const handleAccountUpdate = async (id, formData) => {
            <Users users={users} />
          </Route>
          <Route path='/accounts'>
-           <Accounts accounts={accounts} handleAccountDelete={handleAccountDelete} />
+           <Accounts accounts={accounts} handleAccountDelete={handleAccountDelete} currentUser={currentUser} />
          </Route>
          <Route path='/'>
            <h1>Home</h1>
