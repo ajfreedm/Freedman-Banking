@@ -10,7 +10,7 @@ import AccountEdit from '../screens/AccountEdit';
 
 // Services
 import {getAllUsers} from '../services/user';
-import {getAllAccounts, postAccount, deleteAccount} from '../services/account';
+import {getAllAccounts, postAccount, deleteAccount, putAccount} from '../services/account';
 
 
 export default function MainContainer() {
@@ -47,6 +47,16 @@ const handleAccountDelete = async (id) => {
   setAccounts(prevState=> prevState.filter(account => account.id !== id));
 }
 
+const handleAccountUpdate = async (id, formData) => {
+  const newAccount = await putAccount(id, formData);
+  setAccounts((prevState) =>
+    prevState.map((account) => {
+      return account.id === Number(id) ? newAccount : account;
+    })
+  );
+  history.push('/accounts');
+};
+
 // The order of the routes DO matter
 
   return (
@@ -54,7 +64,7 @@ const handleAccountDelete = async (id) => {
          <Switch>
 
          <Route path='/accounts/:id/edit'>
-           <AccountEdit accounts={accounts}/>
+           <AccountEdit accounts={accounts} handleAccountUpdate={handleAccountUpdate}/>
          </Route>
 
          <Route path='/accounts/new'>

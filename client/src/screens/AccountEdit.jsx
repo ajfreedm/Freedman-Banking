@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function AccountEdit({ accounts }) {
+export default function AccountEdit({ accounts, handleAccountUpdate }) {
   const [formData, setFormData] = useState({
     category: 'checking',
     balance: '',
@@ -12,10 +12,10 @@ export default function AccountEdit({ accounts }) {
   useEffect(() => {
       const prefillFormData = () => {
           const accountItem = accounts.find((account) => account.id === Number(id));
-          setFormData({balance: accountItem.balance});
+          setFormData({category: accountItem.category, balance: accountItem.balance});
       }
       if (accounts.length) prefillFormData();
-  },[accounts]);
+  },[accounts, id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ export default function AccountEdit({ accounts }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        //handleAccountCreate(formData);
+        handleAccountUpdate(id, formData);
       }}
     >
       <h3>Edit Account</h3>
