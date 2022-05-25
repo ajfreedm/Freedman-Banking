@@ -5,6 +5,11 @@ export const getAllAccounts = async () => {
     return resp.data;
 }
 
+export const getOneAccount = async (id) => {
+    const resp = await api.get(`/accounts/${id}`);
+    return resp.data;
+}
+
 export const postAccount = async (accountData) => {
     const resp = await api.post('/accounts', { account: accountData });
     return resp.data;

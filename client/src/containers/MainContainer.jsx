@@ -7,13 +7,14 @@ import Users from '../screens/Users';
 import Accounts from '../screens/Accounts';
 import AccountCreate from '../screens/AccountCreate';
 import AccountEdit from '../screens/AccountEdit';
+import AccountDetail from '../screens/AccountDetail';
 
 // Services
 import {getAllUsers} from '../services/user';
 import {getAllAccounts, postAccount, deleteAccount, putAccount} from '../services/account';
 
 
-export default function MainContainer({ currentUser}) {
+export default function MainContainer({ currentUser }) {
 const [users, setUsers] = useState([]);
 const [accounts, setAccounts] = useState([]);
 const history = useHistory();
@@ -57,18 +58,19 @@ const handleAccountUpdate = async (id, formData) => {
   history.push('/accounts');
 };
 
-// The order of the routes DO matter
+// The order of the routes DO matter. Order from top most specific to bottom least specific
 
   return (
     <div>
          <Switch>
-
          <Route path='/accounts/:id/edit'>
            <AccountEdit accounts={accounts} handleAccountUpdate={handleAccountUpdate}/>
          </Route>
-
          <Route path='/accounts/new'>
-         <AccountCreate handleAccountCreate={handleAccountCreate}/>
+          <AccountCreate handleAccountCreate={handleAccountCreate}/>
+         </Route>
+         <Route path='/accounts/:id'>
+           <AccountDetail/>
          </Route>
          <Route path='/users'>
            <Users users={users} />
